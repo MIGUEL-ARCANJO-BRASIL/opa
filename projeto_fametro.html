@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Minha Amada</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffe3e3;
+            font-family: Arial, sans-serif;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .message {
+            font-size: 1.5rem;
+            color: #ff6b6b;
+            margin: 20px 0;
+        }
+
+        button {
+            background-color: #ff6b6b;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #ff4757;
+        }
+
+        .image-container {
+            img {
+                width: 100%;
+                max-width: 400px;
+                /* ajusta para manter a imagem nítida */
+                border-radius: 10px;
+                margin-top: 20px;
+                
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <!-- Inclua o React e o ReactDOM -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Inclua o arquivo JSX -->
+    <script type="text/babel">
+
+        function RomanticCard() {
+            const messages = [
+                "Você é o amor da minha vida!",
+                "Cada dia ao seu lado é um presente.",
+                "Eu amo cada pedacinho de você!",
+                "Obrigado por fazer parte da minha vida.",
+                "Eu amo cada momento que passo com você.",
+                "Eu te amo! ❤️",
+                "Agora é a surpresa! ->",
+            ];
+
+            const [index, setIndex] = React.useState(0);
+
+            function changeMessage() {
+                // Avança para a próxima mensagem, reiniciando se chegar ao final
+                setIndex((prevIndex) => (prevIndex + 1) % (messages.length + 1));
+
+            }
+            return (
+                <div className="card">
+                    <h1>Para minha amada, Alana</h1>
+                    { <h5 style ={{fontWeight: "500"}}>Com carinho, Miguel. ❤️</h5>}
+                    {index < messages.length ? (
+                        <p className="message">{messages[index]}</p>
+                    ) : (
+                        <div className="image-container">
+                            <img src="https://raw.githubusercontent.com/MIGUEL-ARCANJO-BRASIL/img/main/foto.jpeg" alt="Imagem hospedada no GitHub" />
+
+                        </div>
+                    )}
+                    <button onClick={changeMessage}>Próxima</button>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<RomanticCard />, document.getElementById("app"));
+    </script>
+</body>
+
+</html>
